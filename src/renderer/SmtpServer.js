@@ -2,7 +2,9 @@ const SMTPServer = require("smtp-server").SMTPServer;
 const simpleParser = require("mailparser").simpleParser;
 
 const _ = require('lodash')
-const PouchDB = require('pouchdb');
+const PouchDB = require('pouchdb').defaults({
+    prefix: './db/'
+});
 PouchDB.plugin(require('pouchdb-find'));
 
 global.mailDb  = new PouchDB('mail');
