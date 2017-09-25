@@ -1,30 +1,8 @@
-import path from 'path'
-import { remote } from 'electron'
-
 const SMTPServer = require("smtp-server").SMTPServer;
 const simpleParser = require("mailparser").simpleParser;
 
-const _ = require('lodash')
-
-const databaseDirectory = path.join(remote.app.getPath('userData'), '/db');
-
-const fs = require('fs');
-
-console.info(databaseDirectory)
-
-if (!fs.existsSync(databaseDirectory)){
-    fs.mkdirSync(databaseDirectory);
-}
-
-const PouchDB = require('pouchdb').defaults({
-    prefix: `${databaseDirectory}/`
-});
-PouchDB.plugin(require('pouchdb-find'));
-
-global.mailDb  = new PouchDB('mail');
-global.mailBoxesDb = new PouchDB('mailboxes');
-
 export default class SmtpServer {
+
     constructor() {
 
         this._logger = console.info;
