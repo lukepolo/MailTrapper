@@ -1,8 +1,8 @@
 {
   "name": "mailtrapper",
   "version": "0.0.0",
-  "author": "Luke Policinski <luke.policinski@egov.com>",
-  "description": "An electron-vue project",
+  "author": "Luke Policinski <luke@lukepolo.com>",
+  "description": "Traps mail",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
