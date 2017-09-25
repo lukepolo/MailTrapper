@@ -8,8 +8,10 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
+let environment = process.env.NODE_ENV;
+
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
+const winURL = environment === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
@@ -22,6 +24,11 @@ function createWindow () {
     useContentSize: true,
     width: 1000
   })
+
+  if(environment === 'development') {
+      mainWindow.webContents.openDevTools()
+  }
+
 
   mainWindow.loadURL(winURL)
 
