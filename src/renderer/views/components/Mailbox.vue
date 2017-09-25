@@ -19,11 +19,11 @@
             </p>
 
             <p>
-                Username : {{ mailbox.username }}
+                <clipboard :data="mailbox.username"></clipboard> Username : {{ mailbox.username }}
             </p>
 
             <p>
-                Password : {{ mailbox.password }}
+                <clipboard :data="mailbox.password"></clipboard> Password : {{ mailbox.password }}
             </p>
         </div>
 

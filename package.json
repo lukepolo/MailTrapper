@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "clipboard": "^1.7.1",
     "electron-rebuild": "^1.6.0",
     "electron-updater": "^2.9.4",
     "lodash": "^4.17.4",
