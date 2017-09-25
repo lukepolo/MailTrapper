@@ -14,7 +14,7 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": "./node_modules/.bin/electron-rebuild"
+    "postinstall": "electron-builder install-app-deps"
   },
   "build": {
     "productName": "mailtrapper",
@@ -53,7 +53,6 @@
   "dependencies": {
     "clipboard": "^1.7.1",
     "copy-webpack-plugin": "^4.0.1",
-    "electron-rebuild": "^1.6.0",
     "electron-updater": "^2.9.4",
     "lodash": "^4.17.4",
     "mailparser": "^2.0.5",
