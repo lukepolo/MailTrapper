@@ -22,10 +22,11 @@ export const show = ({commit}, mailbox) => {
 }
 export const create = ({commit}) => {
 
+    let usernameAndPass = uuidv1();
     let mailbox = {
-        name: 'New Mailbox',
-        username: uuidv1(),
-        password: uuidv1(),
+        name: 'New Trap',
+        username: usernameAndPass,
+        password: usernameAndPass,
     };
 
     global.mailBoxesDb.post(mailbox, function callback(err, result) {
