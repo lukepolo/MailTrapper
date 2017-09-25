@@ -1,0 +1,36 @@
+html, body, #app, .wrapper {
+  margin : 0;
+  padding : 0;
+  height: 100%;
+  min-height:100%;
+}
+
+.wrapper{
+  display: flex;
+  flex: 1;
+}
+
+.mailboxes-nav {
+  height: 100%;
+  flex: 0 0 250px;
+  overflow : auto;
+  background: $black;
+}
+
+.messages-nav {
+  flex: 0 0 325px;
+  overflow : auto;
+  background: $gray;
+  border-left : 1px solid black;
+  border-right : 1px solid black;
+}
+
+.content {
+  flex: 1 1 auto;
+  overflow : auto;
+  background: $white;
+}
+
+.svg-inline--fa {
+  cursor: pointer;
+}

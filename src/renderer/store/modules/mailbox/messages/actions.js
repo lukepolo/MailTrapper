@@ -22,8 +22,16 @@ export const get = ({ commit }, mailbox) => {
 }
 
 export const show = ({ commit }, message) => {
-    global.mailDb.get(message).then(function (message) {
-        commit('set', message)
+
+    let foundMessage = null;
+
+    return global.mailDb.get(message).then((doc) => {
+        doc.read = true
+        foundMessage = doc;
+        return global.mailDb.put(doc);
+    }).then(() => {
+        commit('update', foundMessage)
+        commit('set', foundMessage)
     });
 }
 

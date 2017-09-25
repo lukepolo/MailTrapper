@@ -1,0 +1,50 @@
+.messages {
+  color : darken($white, 5%);
+
+  .message {
+    cursor: pointer;
+    padding: 10px 7px;
+    border-bottom: 1px dashed lighten($gray, 10%);
+
+    &:hover {
+      background-color : darken($gray, 5%);
+    }
+
+    &.router-link-active {
+      color: $white;
+      background-color: darken($gray, 5%);
+    }
+
+    &.unread {
+      background-color : lighten($gray, 15%);
+    }
+
+    .subject {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-bottom: 15px;
+    }
+
+    .details {
+      display: flex;
+      .sentTo {
+        flex : 1 1 auto;
+      }
+    }
+  }
+
+  .no-messages {
+    font-size: 1.1em;
+    padding-top:15px;
+  }
+}
+
+.message-details {
+  padding: 15px;
+  border-bottom : 1px solid $grayLight;
+}
+
+.message-content {
+
+}

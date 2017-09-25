@@ -19,6 +19,7 @@ export const update = (state, mailbox) => {
         parseInt(_.findKey(state.mailboxes, { "_id" : mailbox[`_id`] })),
         mailbox
     );
+    global.Vue.set(state, 'mailbox', mailbox)
 };
 
 export const remove = (state, mailbox) => {

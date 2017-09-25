@@ -1,0 +1,70 @@
+.mailboxes {
+  color : darken($white, 15%);
+
+  .actions {
+    margin-top : 5px;
+  }
+
+  .mailbox {
+    display: flex;
+    cursor: pointer;
+    padding: 20px 7px;
+    border-bottom : 1px dashed $gray;
+
+    &.router-link-active {
+      color : $white;
+      background-color : darken($black, 4%);
+    }
+
+    .title {
+      flex: 1 1 auto;
+    }
+
+    &:hover {
+      background-color : darken($black, 4%)
+    }
+  }
+
+  .actions {
+    margin-top: 50px;
+  }
+}
+
+.mailbox-details {
+  padding: 15px;
+  .mailbox-name {
+    display: flex;
+
+    .rename-form {
+      flex : 1 1 auto;
+      input {
+        border:0;
+        width:100%;
+        border-bottom : 1px solid $grayLight;
+        font-size: 30px;
+        line-height: 35px;
+        height: 70px;
+        background: transparent;
+      }
+    }
+
+    .rename {
+      font-size: 40px;
+      margin-left: 20px;
+      &.changed {
+        color : $blue;
+      }
+      .fa-check {
+        vertical-align : -webkit-baseline-middle;
+      }
+    }
+  }
+
+  .delete-button {
+    margin-top: 30px;
+    .btn {
+      padding : 15px;
+      font-size: 1.2em;
+    }
+  }
+}

@@ -7,7 +7,6 @@ export const get = ({commit}) => {
         include_docs: true,
         attachments: true,
     }).then(function (result) {
-        console.info(result)
         commit('setAll', _.map(result.rows, function (row) {
             return row.doc;
         }))
@@ -57,5 +56,6 @@ export const remove = ({commit}, mailbox) => {
         return global.mailBoxesDb.remove(doc);
     }).then(() => {
         commit('remove', mailbox)
+        commit('set', null)
     });
 }
