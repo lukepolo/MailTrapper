@@ -43,7 +43,9 @@
         watch : {
             '$route' : 'fetchData',
             mailbox : function() {
-                Vue.set(this.form, 'name', this.mailbox.name)
+                if(this.mailbox) {
+                    Vue.set(this.form, 'name', this.mailbox.name)
+                }
             }
         },
         data() {
