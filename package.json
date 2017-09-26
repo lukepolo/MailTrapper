@@ -15,7 +15,7 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps",
-    "pretty" : "prettier --write './src/**/*.js'"
+    "pretty": "prettier --write './src/**/*.js'"
   },
   "build": {
     "productName": "Mail Trapper",
@@ -54,6 +54,7 @@
   "dependencies": {
     "clipboard": "^1.7.1",
     "copy-webpack-plugin": "^4.0.1",
+    "electron-updater": "^2.10.0",
     "inversify": "^4.3.0",
     "lodash": "^4.17.4",
     "mailparser": "^2.0.5",
