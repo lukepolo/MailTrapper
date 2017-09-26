@@ -1,11 +1,11 @@
-.mailboxes {
+.traps {
   color : darken($white, 15%);
 
   .actions {
     margin-top : 5px;
   }
 
-  .mailbox {
+  .trap {
     display: flex;
     cursor: pointer;
     padding: 20px 7px;
@@ -30,9 +30,9 @@
   }
 }
 
-.mailbox-details {
+.trap-details {
   padding: 15px;
-  .mailbox-name {
+  .trap-name {
     display: flex;
 
     .rename-form {

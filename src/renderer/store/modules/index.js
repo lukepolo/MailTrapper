@@ -1,5 +1,5 @@
-import mailboxes from "./mailboxes";
+import traps from "./traps";
 
 export default {
-    mailboxes,
+    traps,
 };

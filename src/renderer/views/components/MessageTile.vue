@@ -1,5 +1,5 @@
 <template>
-    <router-link class="message" :class="{ unread : message.read ? false : true }" tag="div" :to="{ name : `message`, params : { mailbox : this.$route.params.mailbox, message : message[`_id`] }}">
+    <router-link class="message" :class="{ unread : message.read ? false : true }" tag="div" :to="{ name : `message`, params : { trap : this.$route.params.trap, message : message[`_id`] }}">
         <div class="subject">
             {{ message.mail.subject }}
         </div>

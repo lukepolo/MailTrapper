@@ -1,18 +1,15 @@
 const fs = require("fs");
-require("dotenv").config();
 const _ = require("lodash");
-const inversify = require("inversify");
 
-global.env = process.env;
+const inversify = require("inversify");
+require("reflect-metadata");
 
 class Config {
     constructor() {
         this._config = {};
-
         const configDirectory = `${__dirname}/../config/`;
         _.each(fs.readdirSync(configDirectory), file => {
-            this._config[file.replace(".js", "")] = require(configDirectory +
-                file);
+            this._config[file.replace(".js", "")] = require('./../config/'+file).default;
         });
     }
 
@@ -27,4 +24,4 @@ class Config {
 
 inversify.decorate(inversify.injectable(), Config);
 
-module.exports = Config;
+export default Config;

@@ -1,7 +1,7 @@
 <template>
-    <router-link tag="div" class="mailbox" :to="{ name : `mailbox`, params : { mailbox : mailbox[`_id`] }}">
+    <router-link tag="div" class="trap" :to="{ name : `trap`, params : { trap : trap[`_id`] }}">
         <span class="title">
-            {{ mailbox.name }}
+            {{ trap.name }}
         </span>
     </router-link>
 </template>
@@ -9,7 +9,7 @@
 <script>
     export default {
         props : [
-            'mailbox'
+            'trap'
         ]
     }
 </script>

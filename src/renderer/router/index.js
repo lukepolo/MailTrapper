@@ -10,15 +10,15 @@ export default new Router({
       component: require('@/views/Home'),
         children : [
             {
-                path: 'mailbox/:mailbox',
-                name: 'mailbox',
+                path: 'trap/:trap',
+                name: 'trap',
                 components: {
-                    default: require('./../views/components/Mailbox'),
+                    default: require('./../views/components/Trap'),
                     messages: require('./../views/components/Messages'),
                 }
             },
             {
-                path: 'mailbox/:mailbox/message/:message',
+                path: 'trap/:trap/message/:message',
                 name: 'message',
                 components: {
                     default: require('./../views/components/Message'),

@@ -1,6 +1,4 @@
-require("reflect-metadata");
-
-const services = require("./services");
+import services from './services'
 const inversify = require("inversify");
 const container = new inversify.Container();
 
@@ -10,12 +8,23 @@ container
     .inSingletonScope();
 
 container
+    .bind(Symbol.for("logger"))
+    .to(services.logger)
+    .inSingletonScope();
+
+container
     .bind(Symbol.for("smtp-server"))
     .to(services.smtpServer)
     .inSingletonScope();
 
 container
-    .bind(Symbol.for("database-connection"))
-    .to(services.smtpServer);
+    .bind(Symbol.for("database"))
+    .to(services.databaseManager);
+
+_.each(services.databases, (databaseClass, database) => {
+    container
+        .bind(Symbol.for(database))
+        .to(databaseClass);
+})
 
 global.container = container;

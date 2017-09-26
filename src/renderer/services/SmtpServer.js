@@ -1,10 +1,14 @@
 const SMTPServer = require("smtp-server").SMTPServer;
 const simpleParser = require("mailparser").simpleParser;
 
-export default class SmtpServer {
+const inversify = require("inversify");
+require("reflect-metadata");
 
-    constructor() {
+class SmtpServer {
 
+    constructor(config, database) {
+
+        this._config = config;
         this._logger = console.info;
 
         this._smtpConfig = {
@@ -16,6 +20,7 @@ export default class SmtpServer {
             },
             onAuth(auth, session, callback) {
 
+                console.info(database)
                 global.mailBoxesDb.createIndex({
                     index: {fields: ['username']},
                 }).then(() => {
@@ -57,7 +62,7 @@ export default class SmtpServer {
     }
 
     start() {
-        new SMTPServer(this._smtpConfig).listen(2525);
+        new SMTPServer(this._smtpConfig).listen(this._config.get('smtp-server.port'));
     }
 
     parseClient(session) {
@@ -92,17 +97,24 @@ export default class SmtpServer {
                 mail : mail,
                 to : mail.to,
                 from : mail.from,
-                mailbox : session.user._id,
+                trap : session.user._id,
                 date : mail.date,
             }
 
 
             global.mailDb.post(mail).then((result) => {
                 mail._id = result.id
-                global.Store.commit('mailboxes/messages/add', mail)
+                global.Store.commit('traps/messages/add', mail)
             });
 
             callback();
         });
     }
 }
+
+inversify.decorate(inversify.injectable(), SmtpServer);
+inversify.decorate(inversify.inject(Symbol.for("config")), SmtpServer, 0);
+inversify.decorate(inversify.inject(Symbol.for("database")), SmtpServer, 1);
+
+
+export default SmtpServer;

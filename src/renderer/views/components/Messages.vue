@@ -21,7 +21,7 @@
         },
         computed : {
             messages() {
-                return this.$store.state.mailboxes.messages.messages[this.$route.params.mailbox]
+                return this.$store.state.traps.messages.messages[this.$route.params.trap]
             }
         }
     }

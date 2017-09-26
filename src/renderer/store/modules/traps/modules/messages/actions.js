@@ -1,20 +1,18 @@
-const _ = require('lodash');
-
-export const get = ({ commit }, mailbox) => {
-    global.mailDb.createIndex({
-        index: {fields: ['date', 'mailbox']},
+export const get = ({ commit }, trap) => {
+    database.connection('messages').createIndex({
+        index: {fields: ['date', 'trap']},
     }).then(() => {
-        global.mailDb.find({
+        database.connection('messages').find({
             selector: {
                 date : {$gt: null},
-                mailbox: mailbox,
+                trap: trap,
             },
             sort: [{
                 'date' : 'desc'
             }]
         }).then((results) => {
             commit('setAll', {
-                mailbox : mailbox,
+                trap : trap,
                 messages : results.docs,
             })
         });
@@ -25,10 +23,10 @@ export const show = ({ commit }, message) => {
 
     let foundMessage = null;
 
-    return global.mailDb.get(message).then((doc) => {
+    return database.connection('messages').get(message).then((doc) => {
         doc.read = true
         foundMessage = doc;
-        return global.mailDb.put(doc);
+        return database.connection('messages').put(doc);
     }).then(() => {
         commit('update', foundMessage)
         commit('set', foundMessage)
