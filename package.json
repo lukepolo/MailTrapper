@@ -20,6 +20,11 @@
   "build": {
     "productName": "Mail Trapper",
     "appId": "io.mailtrapper.app",
+    "publish": [{
+      "provider": "github",
+      "owner": "CodePier",
+      "repo": "Mail-Trapper"
+    }],
     "directories": {
       "output": "build"
     },

@@ -62,6 +62,13 @@ app.on("activate", () => {
 
 import { autoUpdater } from "electron-updater";
 
+autoUpdater.autoDownload = true;
+
+autoUpdater.setFeedURL({
+    owner: 'CodePier',
+    repo: 'Mail-Trapper'
+})
+
 autoUpdater.on("update-downloaded", () => {
   autoUpdater.quitAndInstall();
 });
