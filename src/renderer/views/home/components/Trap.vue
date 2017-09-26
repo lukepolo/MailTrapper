@@ -1,15 +1,15 @@
 <template>
-    <div v-if="mailbox" class="mailbox-details">
-        <h2 class="mailbox-name">
+    <div v-if="trap" class="trap-details">
+        <h2 class="trap-name">
             <form class="rename-form" @submit.prevent="rename">
-                <input ref="mailbox_name" type="text" v-model="form.name">
+                <input ref="trap_name" type="text" v-model="form.name">
             </form>
-            <span class="rename" @click="rename" :class="{ changed : this.mailbox.name != this.form.name}">
+            <span class="rename" @click="rename" :class="{ changed : this.trap.name != this.form.name}">
                 <i class="fal fa-check"></i>
             </span>
         </h2>
 
-        <div class="mailbox-smtp-info">
+        <div class="trap-smtp-info">
             <h3>
                 SMTP Credentials
             </h3>
@@ -19,7 +19,7 @@
             </p>
 
             <p>
-                <clipboard :data="mailbox.username"></clipboard> Username And Password : {{ mailbox.username }}
+                <clipboard :data="trap.username"></clipboard> Username And Password : {{ trap.username }}
             </p>
         </div>
 
@@ -38,9 +38,9 @@
         },
         watch : {
             '$route' : 'fetchData',
-            mailbox : function() {
-                if(this.mailbox) {
-                    Vue.set(this.form, 'name', this.mailbox.name)
+            trap : function() {
+                if(this.trap) {
+                    Vue.set(this.form, 'name', this.trap.name)
                 }
             }
         },
@@ -54,26 +54,26 @@
         },
         methods: {
             fetchData() {
-                this.$store.dispatch('mailboxes/show', this.$route.params.mailbox)
-                this.$store.dispatch('mailboxes/messages/get', this.$route.params.mailbox)
+                this.$store.dispatch('traps/show', this.$route.params.trap)
+                this.$store.dispatch('traps/messages/get', this.$route.params.trap)
             },
             rename() {
-                this.$store.dispatch('mailboxes/update', {
+                this.$store.dispatch('traps/update', {
                     form : this.form,
-                    mailbox : this.mailbox[`_id`],
+                    trap : this.trap[`_id`],
                 }).then(() => {
-                    this.$refs.mailbox_name.blur()
+                    this.$refs.trap_name.blur()
                 })
             },
             remove() {
-                this.$store.dispatch('mailboxes/remove', this.mailbox[`_id`]).then(() => {
+                this.$store.dispatch('traps/remove', this.trap[`_id`]).then(() => {
                     this.$router.push('/')
                 })
             },
         },
         computed: {
-            mailbox() {
-                return this.$store.state.mailboxes.mailbox
+            trap() {
+                return this.$store.state.traps.trap
             }
         }
     }

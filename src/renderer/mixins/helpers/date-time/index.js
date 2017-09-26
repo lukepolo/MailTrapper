@@ -1,11 +1,11 @@
 export const now = () => {
-  return global.moment();
+  return moment();
 };
 
 export const parseDate = date => {
-  return global.moment(date);
+  return moment(date);
 };
 
 export const diff = (date1, date2) => {
-  return global.moment(date2).preciseDiff(global.moment(date1));
+  return moment(date2).preciseDiff(moment(date1));
 };

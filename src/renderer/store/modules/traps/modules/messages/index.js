@@ -3,15 +3,10 @@ import * as actions from "./actions";
 import * as getters from "./getters";
 import * as mutations from "./mutations";
 
-import messages from './modules/mailbox/messages'
-
 export default {
   namespaced: true,
   state,
   mutations,
   actions,
-  getters,
-  modules : {
-      messages
-  }
+  getters
 };

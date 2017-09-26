@@ -19,7 +19,7 @@
         },
         methods: {
             fetchData() {
-                this.$store.dispatch('mailboxes/messages/show', this.$route.params.message)
+                this.$store.dispatch('traps/messages/show', this.$route.params.message)
             }
         },
         computed: {
@@ -30,7 +30,7 @@
                 }
             },
             message() {
-                return this.$store.state.mailboxes.messages.message
+                return this.$store.state.traps.messages.message
             }
         }
     }

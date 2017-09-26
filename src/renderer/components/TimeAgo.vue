@@ -9,6 +9,7 @@
         },
         mounted() {
             this.setCurrentTime()
+            this.update();
             setInterval(() => {
                 this.update();
             }, 1000)
@@ -34,7 +35,7 @@
 
                 let time = this.time
 
-                if (!global.moment.isMoment(time)) {
+                if (!moment.isMoment(time)) {
                     time = this.parseDate(time)
                 }
 

@@ -1,9 +1,9 @@
 import { now, diff, parseDate } from "./date-time";
 
-global.Vue.mixin({
+Vue.mixin({
   methods: {
     now,
     diff,
-    parseDate,
-  },
+    parseDate
+  }
 });
