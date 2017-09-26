@@ -5,8 +5,8 @@ const inversify = require("inversify");
 class Config {
   constructor() {
     this._config = {
-      database : require('./../config/database').default,
-      "smtp-server" : require('./../config/smtp-server').default
+      database: require("./../config/database").default,
+      "smtp-server": require("./../config/smtp-server").default
     };
   }
 
