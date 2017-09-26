@@ -14,8 +14,7 @@ export const add = (state, trap) => {
 
 export const update = (state, trap) => {
   let foundKey = parseInt(_.findKey(state.traps, { _id: trap[`_id`] }));
-
-  if (foundKey) {
+  if (_.isNumber(foundKey)) {
     Vue.set(state, "trap", trap);
     Vue.set(state.traps, foundKey, trap);
   }

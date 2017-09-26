@@ -12,7 +12,7 @@ export const update = (state, message) => {
   let foundKey = parseInt(
     _.findKey(state.messages[message.trap], { _id: message[`_id`] })
   );
-  if (foundKey) {
+  if (_.isNumber(foundKey)) {
     Vue.set(state.messages[message.trap], foundKey, message);
   }
 };
