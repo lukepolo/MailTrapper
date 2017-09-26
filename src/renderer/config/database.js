@@ -1,20 +1,19 @@
-import path from 'path';
-import { remote }  from 'electron';
+import path from "path";
+import { remote } from "electron";
 
 export default {
-    /*
+  /*
      |--------------------------------------------------------------------------
      | Database Driver
      |--------------------------------------------------------------------------
      | PouchDB
      |
      */
-    driver : 'pouchdb',
+  driver: "pouchdb",
 
-
-    connections : {
-        pouchdb : {
-            'path' : path.join(remote.app.getPath('userData'), '/db'),
-        }
+  connections: {
+    pouchdb: {
+      path: path.join(remote.app.getPath("userData"), "/db")
     }
+  }
 };

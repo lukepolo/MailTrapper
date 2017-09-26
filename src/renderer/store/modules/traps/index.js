@@ -3,7 +3,7 @@ import * as actions from "./actions";
 import * as getters from "./getters";
 import * as mutations from "./mutations";
 
-import messages from './modules/messages'
+import messages from "./modules/messages";
 
 export default {
   namespaced: true,
@@ -11,7 +11,7 @@ export default {
   mutations,
   actions,
   getters,
-  modules : {
-      messages
+  modules: {
+    messages
   }
 };

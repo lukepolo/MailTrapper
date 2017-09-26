@@ -1,4 +1,4 @@
 export default {
   traps: [],
-  trap : null,
+  trap: null
 };

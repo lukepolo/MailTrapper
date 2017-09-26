@@ -1,6 +1,5 @@
-import PouchDb from './PouchDb'
+import PouchDb from "./PouchDb";
 
 export default {
-    'pouchdb': PouchDb
-}
-
+  pouchdb: PouchDb
+};

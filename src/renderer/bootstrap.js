@@ -5,7 +5,7 @@
  |
  */
 
-global._ = require('lodash');
+global._ = require("lodash");
 global.moment = require("moment-timezone");
 
 /*
@@ -14,7 +14,7 @@ global.moment = require("moment-timezone");
  |--------------------------------------------------------------------------
  |
  */
-require('./container');
+require("./container");
 
 /*
  |--------------------------------------------------------------------------
@@ -23,11 +23,11 @@ require('./container');
  |
  */
 
-require('./assets/styles/app.scss');
+require("./assets/styles/app.scss");
 
 // Font awesome PRO
-require('./assets/font-awesome/fontawesome');
-require('./assets/font-awesome/packs/light');
+require("./assets/font-awesome/fontawesome");
+require("./assets/font-awesome/packs/light");
 
 /*
  |--------------------------------------------------------------------------
@@ -35,10 +35,9 @@ require('./assets/font-awesome/packs/light');
  |--------------------------------------------------------------------------
  |
  */
-global.database = container.get(Symbol.for('database'));
-database.connect('traps');
-database.connect('messages');
-
+global.database = container.get(Symbol.for("database"));
+database.connect("traps");
+database.connect("messages");
 
 /*
  |--------------------------------------------------------------------------
@@ -57,4 +56,3 @@ container.get(Symbol.for("smtp-server")).start();
 
 require("moment-precise-range-plugin");
 moment.tz.setDefault("UTC");
-
