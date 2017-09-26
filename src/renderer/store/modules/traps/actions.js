@@ -19,6 +19,7 @@ export const show = ({commit}, trap) => {
         commit('set', trap)
     })
 }
+
 export const create = ({commit}) => {
 
     let usernameAndPass = uuidv1();
@@ -42,9 +43,9 @@ export const create = ({commit}) => {
 export const update = ({commit}, {trap, form}) => {
     return database.connection('traps').get(trap).then((doc) => {
         doc.name = form.name
-        return global.trapesDb.put(doc);
+        return database.connection('traps').put(doc);
     }).then(() => {
-        global.trapesDb.get(trap).then((doc) => {
+        database.connection('traps').get(trap).then((doc) => {
             commit('update', doc)
             return doc;
         })
@@ -52,8 +53,8 @@ export const update = ({commit}, {trap, form}) => {
 }
 
 export const remove = ({commit}, trap) => {
-    return global.trapesDb.get(trap).then((doc) => {
-        return global.trapesDb.remove(doc);
+    return database.connection('traps').get(trap).then((doc) => {
+        return database.connection('traps').remove(doc);
     }).then(() => {
         commit('remove', trap)
         commit('set', null)

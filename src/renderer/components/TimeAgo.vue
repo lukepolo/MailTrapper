@@ -9,6 +9,7 @@
         },
         mounted() {
             this.setCurrentTime()
+            this.update();
             setInterval(() => {
                 this.update();
             }, 1000)

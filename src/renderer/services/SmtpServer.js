@@ -1,12 +1,12 @@
 const SMTPServer = require("smtp-server").SMTPServer;
 const simpleParser = require("mailparser").simpleParser;
 
-const inversify = require("inversify");
 require("reflect-metadata");
+const inversify = require("inversify");
 
 class SmtpServer {
 
-    constructor(config, database) {
+    constructor(config) {
 
         this._config = config;
         this._logger = console.info;
@@ -20,8 +20,7 @@ class SmtpServer {
             },
             onAuth(auth, session, callback) {
 
-                console.info(database)
-                global.mailBoxesDb.createIndex({
+                database.connection('traps').createIndex({
                     index: {fields: ['username']},
                 }).then(() => {
 
@@ -30,7 +29,7 @@ class SmtpServer {
                             new Error("Invalid username or password")
                         );
                     }
-                    global.mailBoxesDb.find({
+                    database.connection('traps').find({
                         selector: {
                             username: auth.username,
                         },
@@ -102,7 +101,7 @@ class SmtpServer {
             }
 
 
-            global.mailDb.post(mail).then((result) => {
+            database.connection('messages').post(mail).then((result) => {
                 mail._id = result.id
                 global.Store.commit('traps/messages/add', mail)
             });
@@ -114,7 +113,6 @@ class SmtpServer {
 
 inversify.decorate(inversify.injectable(), SmtpServer);
 inversify.decorate(inversify.inject(Symbol.for("config")), SmtpServer, 0);
-inversify.decorate(inversify.inject(Symbol.for("database")), SmtpServer, 1);
 
 
 export default SmtpServer;
