@@ -1,2 +1,2 @@
-global.Vue.component("TimeAgo", require("./TimeAgo.vue"));
-global.Vue.component("Clipboard", require("./Clipboard.vue"));
+Vue.component("TimeAgo", require("./TimeAgo.vue"));
+Vue.component("Clipboard", require("./Clipboard.vue"));
