@@ -1,6 +1,6 @@
 {
   "name": "mailtrapper",
-  "version": "0.0.0",
+  "version": "0.0.1cl",
   "author": "Luke Policinski <luke@lukepolo.com>",
   "description": "Traps mail",
   "license": null,
@@ -15,11 +15,11 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps",
-    "pretty" : "prettier --write './src/renderer/**/*.js'"
+    "pretty" : "prettier --write './src/**/*.js'"
   },
   "build": {
-    "productName": "mailtrapper",
-    "appId": "org.simulatedgreg.electron-vue",
+    "productName": "Mail Trapper",
+    "appId": "io.mailtrapper.app",
     "directories": {
       "output": "build"
     },
@@ -54,7 +54,6 @@
   "dependencies": {
     "clipboard": "^1.7.1",
     "copy-webpack-plugin": "^4.0.1",
-    "electron-updater": "^2.9.4",
     "inversify": "^4.3.0",
     "lodash": "^4.17.4",
     "mailparser": "^2.0.5",
