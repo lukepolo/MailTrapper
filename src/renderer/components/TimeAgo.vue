@@ -35,7 +35,7 @@
 
                 let time = this.time
 
-                if (!global.moment.isMoment(time)) {
+                if (!moment.isMoment(time)) {
                     time = this.parseDate(time)
                 }
 

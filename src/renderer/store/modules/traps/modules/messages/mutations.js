@@ -9,11 +9,12 @@ export const set = (state, message) => {
 };
 
 export const update = (state, message) => {
-  Vue.set(
-    state.messages[message.trap],
-    parseInt(_.findKey(state.messages[message.trap], { _id: message[`_id`] })),
-    message
+  let foundKey = parseInt(
+    _.findKey(state.messages[message.trap], { _id: message[`_id`] })
   );
+  if (foundKey) {
+    Vue.set(state.messages[message.trap], foundKey, message);
+  }
 };
 
 export const add = (state, message) => {

@@ -15,9 +15,6 @@ export const get = ({ commit }) => {
           return row.doc;
         })
       );
-    })
-    .catch(function(err) {
-      console.log(err);
     });
 };
 
@@ -29,6 +26,7 @@ export const show = ({ commit }, trap) => {
 
 export const create = ({ commit }) => {
   let usernameAndPass = uuidv1();
+
   let trap = {
     name: "New Trap",
     username: usernameAndPass,
@@ -36,12 +34,7 @@ export const create = ({ commit }) => {
   };
 
   database.connection("traps").post(trap, function callback(err, result) {
-    if (err) {
-      return console.info(err);
-    }
-
     trap[`_id`] = result.id;
-
     commit("add", _.merge(trap, result));
   });
 };

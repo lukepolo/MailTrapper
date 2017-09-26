@@ -7,22 +7,22 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: require("@/views/Home"),
+      component: require("@views/home/Home"),
       children: [
         {
           path: "trap/:trap",
           name: "trap",
           components: {
-            default: require("./../views/components/Trap"),
-            messages: require("./../views/components/Messages")
+            default: require("@views/home/components/Trap"),
+            messages: require("@views/home/components/Messages")
           }
         },
         {
           path: "trap/:trap/message/:message",
           name: "message",
           components: {
-            default: require("./../views/components/Message"),
-            messages: require("./../views/components/Messages")
+            default: require("@views/home/components/Message"),
+            messages: require("@views/home/components/Messages")
           }
         }
       ]

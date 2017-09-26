@@ -92,7 +92,7 @@ class SmtpServer {
 
       database.connection("messages").post(mail).then(result => {
         mail._id = result.id;
-        global.Store.commit("traps/messages/add", mail);
+        VueStore.commit("traps/messages/add", mail);
       });
 
       callback();
