@@ -1,17 +1,13 @@
-const fs = require("fs");
 const _ = require("lodash");
-
-const inversify = require("inversify");
 require("reflect-metadata");
+const inversify = require("inversify");
 
 class Config {
   constructor() {
-    this._config = {};
-    const configDirectory = `${__dirname}/../config/`;
-    _.each(fs.readdirSync(configDirectory), file => {
-      this._config[file.replace(".js", "")] = require("./../config/" +
-        file).default;
-    });
+    this._config = {
+      database : require('./../config/database').default,
+      "smtp-server" : require('./../config/smtp-server').default
+    };
   }
 
   get(key, defaultValue) {

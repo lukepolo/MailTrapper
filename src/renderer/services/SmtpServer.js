@@ -1,8 +1,7 @@
-const SMTPServer = require("smtp-server").SMTPServer;
-const simpleParser = require("mailparser").simpleParser;
-
 require("reflect-metadata");
 const inversify = require("inversify");
+const SMTPServer = require("smtp-server").SMTPServer;
+const simpleParser = require("mailparser").simpleParser;
 
 class SmtpServer {
   constructor(config) {

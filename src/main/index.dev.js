@@ -5,15 +5,8 @@
  *  environment.
  */
 
-/* eslint-disable */
-
-// Set environment for development
 process.env.NODE_ENV = "development";
 
-// Install `electron-debug` with `devtron`
-require("electron-debug")({ showDevTools: true });
-
-// Install `vue-devtools`
 require("electron").app.on("ready", () => {
   let installExtension = require("electron-devtools-installer");
   installExtension
@@ -24,5 +17,4 @@ require("electron").app.on("ready", () => {
     });
 });
 
-// Require `main` process to boot app
 require("./index");

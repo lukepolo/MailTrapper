@@ -1,6 +1,6 @@
 const _ = require("lodash");
-const inversify = require("inversify");
 require("reflect-metadata");
+const inversify = require("inversify");
 
 const defaults = {
   success: "green",
