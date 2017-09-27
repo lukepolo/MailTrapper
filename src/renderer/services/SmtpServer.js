@@ -89,10 +89,13 @@ class SmtpServer {
         date: mail.date
       };
 
-      database.connection("messages").post(mail).then(result => {
-        mail._id = result.id;
-        VueStore.commit("traps/messages/add", mail);
-      });
+      database
+        .connection("messages")
+        .post(mail)
+        .then(result => {
+          mail._id = result.id;
+          VueStore.commit("traps/messages/add", mail);
+        });
 
       callback();
     });
