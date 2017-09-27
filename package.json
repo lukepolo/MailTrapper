@@ -1,9 +1,9 @@
 {
   "name": "mailtrapper",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "author": "Luke Policinski <luke@lukepolo.com>",
   "description": "Traps mail",
-  "license": null,
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -20,11 +20,6 @@
   "build": {
     "productName": "Mail Trapper",
     "appId": "io.mailtrapper.app",
-    "publish": [{
-      "provider": "github",
-      "owner": "CodePier",
-      "repo": "Mail-Trapper"
-    }],
     "directories": {
       "output": "build"
     },
