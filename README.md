@@ -2,7 +2,10 @@
 
 [![StyleJS](https://stylejs.io/repository/7/badge?branch=master)](https://stylejs.io/repository/7/patches)
 
-#### Build Setup
+### Download Links
+https://github.com/lukepolo/MailTrapper/releases
+
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -19,7 +22,7 @@ npm run build
 
 ---
 
-## TODO's
+### TODO's
 
 * Pagination for traps / messages
 * App Envoyer since its now a public repo it can be setup
