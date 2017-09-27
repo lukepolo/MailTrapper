@@ -347,9 +347,8 @@
       _ref2$height = _ref2.height,
       height = _ref2$height === undefined ? UNITS_IN_GRID : _ref2$height,
       _ref2$startCentered = _ref2.startCentered,
-      startCentered = _ref2$startCentered === undefined
-        ? false
-        : _ref2$startCentered;
+      startCentered =
+        _ref2$startCentered === undefined ? false : _ref2$startCentered;
 
     var val = "";
 
@@ -536,10 +535,10 @@
         _extends({}, styles, {
           "transform-origin":
             offset.x +
-              transform.x / 16 +
-              "em " +
-              (offset.y + transform.y / 16) +
-              "em"
+            transform.x / 16 +
+            "em " +
+            (offset.y + transform.y / 16) +
+            "em"
         })
       );
     }
@@ -631,9 +630,10 @@
       styles: extra.styles
     });
 
-    var _ref2 = compose.found && main.found
-      ? makeIconComposition(args)
-      : makeIconStandard(args),
+    var _ref2 =
+        compose.found && main.found
+          ? makeIconComposition(args)
+          : makeIconStandard(args),
       children = _ref2.children,
       attributes = _ref2.attributes;
 
@@ -711,12 +711,13 @@
   var namespace = w[NAMESPACE_IDENTIFIER];
 
   var noop$1 = function noop() {};
-  var p = config.measurePerformance &&
+  var p =
+    config.measurePerformance &&
     PERFORMANCE &&
     PERFORMANCE.mark &&
     PERFORMANCE.measure
-    ? PERFORMANCE
-    : { mark: noop$1, measure: noop$1 };
+      ? PERFORMANCE
+      : { mark: noop$1, measure: noop$1 };
   var preamble = 'FA "5.0.0-rc2"';
 
   var begin = function begin(name) {
@@ -740,13 +741,11 @@
   function toHtml(abstractNodes) {
     var tag = abstractNodes.tag,
       _abstractNodes$attrib = abstractNodes.attributes,
-      attributes = _abstractNodes$attrib === undefined
-        ? {}
-        : _abstractNodes$attrib,
+      attributes =
+        _abstractNodes$attrib === undefined ? {} : _abstractNodes$attrib,
       _abstractNodes$childr = abstractNodes.children,
-      children = _abstractNodes$childr === undefined
-        ? []
-        : _abstractNodes$childr;
+      children =
+        _abstractNodes$childr === undefined ? [] : _abstractNodes$childr;
 
     if (typeof abstractNodes === "string") {
       return htmlEscape(abstractNodes);
@@ -924,9 +923,8 @@
   ) {
     var keys = Object.keys(subject),
       length = keys.length,
-      iterator = thisContext !== undefined
-        ? bindInternal4(fn, thisContext)
-        : fn,
+      iterator =
+        thisContext !== undefined ? bindInternal4(fn, thisContext) : fn,
       i,
       key,
       result;
@@ -1109,53 +1107,56 @@
     if (!transformString) {
       return transform;
     } else {
-      return transformString.toLowerCase().split(" ").reduce(function(acc, n) {
-        var parts = n.toLowerCase().split("-");
-        var first = parts[0];
-        var rest = parts.slice(1).join("-");
+      return transformString
+        .toLowerCase()
+        .split(" ")
+        .reduce(function(acc, n) {
+          var parts = n.toLowerCase().split("-");
+          var first = parts[0];
+          var rest = parts.slice(1).join("-");
 
-        if (first && rest === "h") {
-          acc.flipX = true;
+          if (first && rest === "h") {
+            acc.flipX = true;
+            return acc;
+          }
+
+          if (first && rest === "v") {
+            acc.flipY = true;
+            return acc;
+          }
+
+          rest = parseFloat(rest);
+
+          if (isNaN(rest)) {
+            return acc;
+          }
+
+          switch (first) {
+            case "grow":
+              acc.size = acc.size + rest;
+              break;
+            case "shrink":
+              acc.size = acc.size - rest;
+              break;
+            case "left":
+              acc.x = acc.x - rest;
+              break;
+            case "right":
+              acc.x = acc.x + rest;
+              break;
+            case "up":
+              acc.y = acc.y - rest;
+              break;
+            case "down":
+              acc.y = acc.y + rest;
+              break;
+            case "rotate":
+              acc.rotate = acc.rotate + rest;
+              break;
+          }
+
           return acc;
-        }
-
-        if (first && rest === "v") {
-          acc.flipY = true;
-          return acc;
-        }
-
-        rest = parseFloat(rest);
-
-        if (isNaN(rest)) {
-          return acc;
-        }
-
-        switch (first) {
-          case "grow":
-            acc.size = acc.size + rest;
-            break;
-          case "shrink":
-            acc.size = acc.size - rest;
-            break;
-          case "left":
-            acc.x = acc.x - rest;
-            break;
-          case "right":
-            acc.x = acc.x + rest;
-            break;
-          case "up":
-            acc.y = acc.y - rest;
-            break;
-          case "down":
-            acc.y = acc.y + rest;
-            break;
-          case "rotate":
-            acc.rotate = acc.rotate + rest;
-            break;
-        }
-
-        return acc;
-      }, transform);
+        }, transform);
     }
   };
 
@@ -1405,9 +1406,8 @@
   }
 
   function onTree(root) {
-    var callback = arguments.length > 1 && arguments[1] !== undefined
-      ? arguments[1]
-      : null;
+    var callback =
+      arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
     var prefixes = Object.keys(packs);
     var prefixesDomQuery = ["." + LAYERS_TEXT_CLASSNAME]
@@ -1450,9 +1450,8 @@
   }
 
   function onNode(node) {
-    var callback = arguments.length > 1 && arguments[1] !== undefined
-      ? arguments[1]
-      : null;
+    var callback =
+      arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
     var mutation = generateMutation(node);
 
@@ -1472,7 +1471,8 @@
 
   var loaded = (DOCUMENT.documentElement.doScroll
     ? /^loaded|^c/
-    : /^loaded|^i|^c/).test(DOCUMENT.readyState);
+    : /^loaded|^i|^c/
+  ).test(DOCUMENT.readyState);
 
   if (!loaded) DOCUMENT.addEventListener("DOMContentLoaded", listener);
 
@@ -1543,11 +1543,10 @@
       {
         key: "_pullDefinitions",
         value: function _pullDefinitions(additions, definition) {
-          var normalized = definition.prefix &&
-            definition.iconName &&
-            definition.icon
-            ? { 0: definition }
-            : definition;
+          var normalized =
+            definition.prefix && definition.iconName && definition.icon
+              ? { 0: definition }
+              : definition;
 
           Object.keys(normalized).map(function(key) {
             var _normalized$key = normalized[key],
@@ -1641,18 +1640,18 @@
   var api = {
     dom: {
       i2svg: function i2svg() {
-        var params = arguments.length > 0 && arguments[0] !== undefined
-          ? arguments[0]
-          : {};
+        var params =
+          arguments.length > 0 && arguments[0] !== undefined
+            ? arguments[0]
+            : {};
 
         ensureStyles();
 
         var _params$node = params.node,
           node = _params$node === undefined ? DOCUMENT : _params$node,
           _params$callback = params.callback,
-          callback = _params$callback === undefined
-            ? function() {}
-            : _params$callback;
+          callback =
+            _params$callback === undefined ? function() {} : _params$callback;
 
         onTree(node, callback);
       },
@@ -1675,13 +1674,13 @@
     findIconDefinition: findIconDefinition,
 
     icon: function icon(iconDefinition) {
-      var params = arguments.length > 1 && arguments[1] !== undefined
-        ? arguments[1]
-        : {};
+      var params =
+        arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var _params$transform = params.transform,
-        transform = _params$transform === undefined
-          ? meaninglessTransform
-          : _params$transform,
+        transform =
+          _params$transform === undefined
+            ? meaninglessTransform
+            : _params$transform,
         _params$compose = params.compose,
         compose = _params$compose === undefined ? null : _params$compose,
         _params$title = params.title,
@@ -1694,8 +1693,8 @@
         style = _params$style === undefined ? {} : _params$style;
 
       var _ref = iconDefinition.icon
-        ? iconDefinition
-        : findIconDefinition(iconDefinition),
+          ? iconDefinition
+          : findIconDefinition(iconDefinition),
         prefix = _ref.prefix,
         iconName = _ref.iconName,
         icon = _ref.icon;
@@ -1733,21 +1732,20 @@
     },
 
     text: function text(content) {
-      var params = arguments.length > 1 && arguments[1] !== undefined
-        ? arguments[1]
-        : {};
+      var params =
+        arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var _params$transform2 = params.transform,
-        transform = _params$transform2 === undefined
-          ? meaninglessTransform
-          : _params$transform2,
+        transform =
+          _params$transform2 === undefined
+            ? meaninglessTransform
+            : _params$transform2,
         _params$title2 = params.title,
         title = _params$title2 === undefined ? null : _params$title2,
         _params$classes2 = params.classes,
         classes = _params$classes2 === undefined ? [] : _params$classes2,
         _params$attributes2 = params.attributes,
-        attributes = _params$attributes2 === undefined
-          ? {}
-          : _params$attributes2,
+        attributes =
+          _params$attributes2 === undefined ? {} : _params$attributes2,
         _params$style2 = params.style,
         style = _params$style2 === undefined ? {} : _params$style2;
 

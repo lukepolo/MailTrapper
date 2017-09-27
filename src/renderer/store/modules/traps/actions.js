@@ -19,9 +19,12 @@ export const get = ({ commit }) => {
 };
 
 export const show = ({ commit }, trap) => {
-  database.connection("traps").get(trap).then(trap => {
-    commit("set", trap);
-  });
+  database
+    .connection("traps")
+    .get(trap)
+    .then(trap => {
+      commit("set", trap);
+    });
 };
 
 export const create = ({ commit }) => {
@@ -48,10 +51,13 @@ export const update = ({ commit }, { trap, form }) => {
       return database.connection("traps").put(doc);
     })
     .then(() => {
-      database.connection("traps").get(trap).then(doc => {
-        commit("update", doc);
-        return doc;
-      });
+      database
+        .connection("traps")
+        .get(trap)
+        .then(doc => {
+          commit("update", doc);
+          return doc;
+        });
     });
 };
 
