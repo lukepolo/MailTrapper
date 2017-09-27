@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, dialog, BrowserWindow } from "electron";
 
 /**
  * Set `__static` path to static files in production
@@ -65,12 +65,27 @@ import { autoUpdater } from "electron-updater";
 autoUpdater.autoDownload = true;
 
 autoUpdater.setFeedURL({
-    owner: 'CodePier',
-    repo: 'Mail-Trapper'
-})
+  provider: "github",
+  owner: "CodePier",
+  repo: "Mail-Trapper"
+});
 
 autoUpdater.on("update-downloaded", () => {
-  autoUpdater.quitAndInstall();
+  dialog.showMessageBox(
+    {
+      type: "info",
+      buttons: ["Restart", "Later"],
+      title: "Application Update",
+      message: "WOO!",
+      detail:
+        "A new version has been downloaded. Restart the application to apply the updates."
+    },
+    response => {
+      if (response === 0) {
+        autoUpdater.quitAndInstall();
+      }
+    }
+  );
 });
 
 app.on("ready", () => {
