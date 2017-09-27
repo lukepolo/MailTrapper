@@ -1,5 +1,7 @@
 # Mail Trapper
 
+[![StyleJS](https://stylejs.io/repository/7/badge?branch=master)](https://stylejs.io/repository/7/patches)
+
 #### Build Setup
 
 ``` bash
