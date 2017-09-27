@@ -64,12 +64,6 @@ import { autoUpdater } from "electron-updater";
 
 autoUpdater.autoDownload = true;
 
-autoUpdater.setFeedURL({
-  provider: "github",
-  owner: "CodePier",
-  repo: "Mail-Trapper"
-});
-
 autoUpdater.on("update-downloaded", () => {
   dialog.showMessageBox(
     {
