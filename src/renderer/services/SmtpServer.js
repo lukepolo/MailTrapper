@@ -30,7 +30,8 @@ class SmtpServer {
                 username: auth.username
               },
               limit: 1
-            }, (error, results) => {
+            },
+            (error, results) => {
               if (error) {
                 return callback(new Error("We had a system error"));
               }
